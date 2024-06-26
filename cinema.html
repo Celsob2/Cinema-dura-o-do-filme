@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filmes em Cartaz</title>
+  <style>
+    h1 {
+      font-size: 6vw;
+    }
+  </style>
+</head>
+<body>
+  <h1>Filmes em Cartaz</h1>
+  <form id="frm">
+    <p>Título do Filme</p>
+    <input type="text" id="inTitulo" required>
+    <p>Duração (Min)</p>
+    <input type="number" id="inDuracao" required>
+    <p>
+      <input type="submit" value="Converter em Horas e Minutos">
+    </p>
+  </form>
+  <h3></h3>
+  <h4></h4>
+
+  <script>
+    document.getElementsByTagName("h1")[0].style.fontSize = "6vw";
+    const frm = document.querySelector("#frm");
+    const resp1 = document.querySelector("h3");
+    const resp2 = document.querySelector("h4");
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const titulo = frm.inTitulo.value;
+      const duracao = Number(frm.inDuracao.value);
+      const horas = Math.floor(duracao / 60);
+      const minutos = duracao % 60;
+      resp1.innerText = titulo;
+      resp2.innerText = `${horas} hora(s) e ${minutos} minuto(s)`;
+    });
+  </script>
+</body>
+</html>
